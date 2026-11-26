@@ -1,4 +1,4 @@
-# Integração com o `yt-pub-livesx`
+# Integraçêo com o `yt-pub-livesx`
 
 Proposta de desenho. **Nada aqui foi implementado ainda** — o que foi validado é o fluxo manual descrito em [publicar-video.md](publicar-video.md).
 
@@ -6,47 +6,47 @@ Hoje o pipeline corta lives e publica **no YouTube**. A ideia é estender: o mes
 
 ## Duas restrições que decidem o projeto — leia antes de qualquer código
 
-### 1. Daemon não fala MCP
+### 1. Daemon nêo fala MCP
 
-Tudo que foi validado rodou dentro de uma **sessão interativa do Claude Code**, com OAuth já concedido. O `scheduler.py` e o `import_worker.py` são daemons Python — eles **não têm** essa conexão.
+Tudo que foi validado rodou dentro de uma **sessêo interativa do Claude Code**, com OAuth já concedido. O `scheduler.py` e o `import_worker.py` sêo daemons Python — eles **nêo têm** essa conexêo.
 
 Três caminhos, nenhum testado ainda:
 
 | Caminho | Como | Custo | Risco |
 |---|---|---|---|
-| **A. `claude -p` headless** | O pipeline chama o Claude Code em modo não-interativo, que usa o MCP já autenticado | Consome cota Claude | Saída não-determinística; caro pra tarefa mecânica |
-| **B. `mcp-remote` como cliente** | Python fala com `npx mcp-remote https://ai.metricool.com/mcp`. O token OAuth fica em cache (`~/.mcp-auth`) após um grant interativo | Grátis | Renovação do token não é clara; se expirar, o daemon quebra calado |
+| **A. `claude -p` headless** | O pipeline chama o Claude Code em modo nêo-interativo, que usa o MCP já autenticado | Consome cota Claude | Saída nêo-determinística; caro pra tarefa mecânica |
+| **B. `mcp-remote` como cliente** | Python fala com `npx mcp-remote https://ai.metricool.com/mcp`. O token OAuth fica em cache (`~/.mcp-auth`) após um grant interativo | Grátis | Renovaçêo do token nêo é clara; se expirar, o daemon quebra calado |
 | **C. API REST** (`X-Mc-Auth`) | HTTP direto do Python, sem MCP | **Exige Advanced (€43+/mês)** | Nenhum — é o caminho projetado pra isso |
 
-**Recomendação:** começar em **B** com prova de conceito curta (autenticar uma vez, verificar se sobrevive a um restart e a 24h). Se o token não se sustentar sozinho, a escolha real é entre A (mais caro por execução) e C (mensalidade). Não escreva o integrador inteiro antes de resolver isso — é o ponto que pode inviabilizar tudo.
+**Recomendaçêo:** começar em **B** com prova de conceito curta (autenticar uma vez, verificar se sobrevive a um restart e a 24h). Se o token nêo se sustentar sozinho, a escolha real é entre A (mais caro por execuçêo) e C (mensalidade). Nêo escreva o integrador inteiro antes de resolver isso — é o ponto que pode inviabilizar tudo.
 
-### 2. A matemática do volume não fecha no Free
+### 2. A matemática do volume nêo fecha no Free
 
 - `publicados` no lives8: **989 linhas**
 - Plano Free: **20 posts/mês**, **1 marca**
 
 E mais: cada instância `yt-pub-lives<N>` que publicar numa conta diferente precisa da **própria marca** — o Free só tem uma.
 
-Dois modos possíveis, e é uma decisão de negócio, não técnica:
+Dois modos possíveis, e é uma decisêo de negócio, nêo técnica:
 
 | Modo | O que é | Plano |
 |---|---|---|
 | **Curadoria** | ~20 clips/mês escolhidos a dedo (melhores, ou os já validados no YouTube) | Free serve |
 | **Volume** | Todo clip publicado no YouTube vira Reel + TikTok | Starter mínimo (€16–29/mês); 5–10 marcas |
 
-Um integrador que ignore isso descreve algo que não roda.
+Um integrador que ignore isso descreve algo que nêo roda.
 
 ## Onde implementar
 
-Regra do projeto (`CLAUDE.md` do `yt-pub-livesx`): **`yt-pub-livesx` é o template fonte**; `scripts/sync-instances` propaga. Então:
+Regra do projeto (`CLAUDE.md` do `yt-pub-livesx`): **`yt-pub-livesx` é o template fonte**; `scripts/sync-instances` propaga. Entêo:
 
 - Código novo em `yt-pub-livesx`
 - Config **por instância**, em `config/.env` — nunca sincronizada
 - Depois do sync, reiniciar os serviços afetados
-- Bumpar a versão no `dashboard/index.html`
+- Bumpar a versêo no `dashboard/index.html`
 
 ```
-METRICOOL_ENABLED=false          # desligado por padrão
+METRICOOL_ENABLED=false          # desligado por padrêo
 METRICOOL_BLOG_ID=6745962
 METRICOOL_TIMEZONE=America/Sao_Paulo
 METRICOOL_NETWORKS=instagram,tiktok
@@ -58,7 +58,7 @@ MIDIA_RELEASE_TAG=v1
 
 ## Tabela de rastreio
 
-Sem ela não há idempotência — um restart do scheduler reagenda tudo.
+Sem ela nêo há idempotência — um restart do scheduler reagenda tudo.
 
 ```sql
 CREATE TABLE IF NOT EXISTS metricool_posts (
@@ -77,9 +77,9 @@ CREATE TABLE IF NOT EXISTS metricool_posts (
 );
 ```
 
-> **`metricool_id` muda a cada `updateScheduledPost`; o `uuid` não.** Guarde os dois, mas case pelo `uuid`.
+> **`metricool_id` muda a cada `updateScheduledPost`; o `uuid` nêo.** Guarde os dois, mas case pelo `uuid`.
 
-O `UNIQUE(publicado_id, networks)` é a trava contra republicação dupla.
+O `UNIQUE(publicado_id, networks)` é a trava contra republicaçêo dupla.
 
 ## Fluxo
 
@@ -89,7 +89,7 @@ publicados (novo registro)
 [1] resolve o master local
       lives.db: publicados.live_video_id
       → /mnt/hd8t/yt-pub-lives/yt-pub-lives<N>/lives/<live_video_id>/clips/
-      → clips_manifest.json dá o nome real do arquivo + título + descrição
+      → clips_manifest.json dá o nome real do arquivo + título + descriçêo
       ↓
 [2] valida  H.264? 1080x1920? < 2 GB?   (transcodifica se preciso)
       ↓
@@ -104,7 +104,7 @@ publicados (novo registro)
 
 ### Passo 1 — o detalhe que economiza tempo
 
-**O `filename` da tabela `publicados` NÃO é o nome do arquivo no disco.**
+**O `filename` da tabela `publicados` NêO é o nome do arquivo no disco.**
 
 Exemplo real: `publicados.filename = "import_20260804_videos_1"`, mas o arquivo é `reel-263-16.mp4`. Quem dá o nome verdadeiro é o **`clips_manifest.json`** na pasta da live.
 
@@ -112,29 +112,29 @@ O manifesto também traz `title` e `description` — **use a `description` como 
 
 ### Passo 2 — codec
 
-Master do pipeline já é H.264 (verificado). A validação é rede de proteção pra clips vindos de outras fontes — e é obrigatória se a origem for `yt-dlp`, que devolve **AV1**.
+Master do pipeline já é H.264 (verificado). A validaçêo é rede de proteçêo pra clips vindos de outras fontes — e é obrigatória se a origem for `yt-dlp`, que devolve **AV1**.
 
 ### Passo 5 — nome do arquivo
 
 `publicados.clip_video_id` é único e ASCII. Use `clip-<clip_video_id>.mp4` — resolve o problema de espaço e acento de graça.
 
-## YouTube: não republique
+## YouTube: nêo republique
 
 O `youtubeData` da marca `inemafuturos` aponta pro **`UC2QbQDyPKuHk93dwo5iq3Sw` = INEMA TDS**, que é o canal de **origem** das lives. O pipeline já publica os clips no **INEMA TIA** (`UCavuQHkxBSAZbzRoOm6Gq4g`), o canal de destino.
 
 Ou seja: agendar YouTube pelo Metricool publicaria o clip **de novo, no canal de onde ele saiu**.
 
-`METRICOOL_NETWORKS` deve ficar em `instagram,tiktok`. Se um dia quiser YouTube pelo Metricool, primeiro **reaponte a marca pro INEMA TIA** e desligue a publicação nativa do pipeline — as duas juntas duplicam.
+`METRICOOL_NETWORKS` deve ficar em `instagram,tiktok`. Se um dia quiser YouTube pelo Metricool, primeiro **reaponte a marca pro INEMA TIA** e desligue a publicaçêo nativa do pipeline — as duas juntas duplicam.
 
-## Ordem de implementação
+## Ordem de implementaçêo
 
 1. **Resolver o item 1 (auth do daemon).** Prova de conceito do caminho B, 30 minutos. Sem isso, nada depois vale
-2. Tabela `metricool_posts` + migração no `db.py`
+2. Tabela `metricool_posts` + migraçêo no `db.py`
 3. Resolvedor de master (banco + manifesto → caminho no disco), com teste no clip `Ed9HFMSe0o4`
-4. Uploader pro release, com `--clobber` e verificação da URL
+4. Uploader pro release, com `--clobber` e verificaçêo da URL
 5. Agendador, atrás de `METRICOOL_ENABLED=false`, começando em `draft=true`
 6. Coluna no dashboard mostrando status Metricool
-7. Só então ligar em uma instância, em modo curadoria
+7. Só entêo ligar em uma instância, em modo curadoria
 
 ## Em aberto
 
@@ -142,4 +142,4 @@ Ou seja: agendar YouTube pelo Metricool publicaria o clip **de novo, no canal de
 - Post multi-rede consome 1 ou 2 da cota? Muda o dimensionamento em ~2×
 - Precisa de capa/thumbnail própria pro Reel, ou o primeiro frame serve?
 - Curadoria: manual, ou automática pelas métricas do YouTube (clip que foi bem vira Reel)?
-- Limites de publicação do lado do Instagram/TikTok em volume — não documentados, não testados
+- Limites de publicaçêo do lado do Instagram/TikTok em volume — nêo documentados, nêo testados
