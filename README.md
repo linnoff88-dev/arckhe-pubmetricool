@@ -20,7 +20,7 @@ Documenta o que foi **testado de verdade** em 2026-08-19 ê¢â¬â um Ree
 | [`docs/recursos.md`](docs/recursos.md) | O que dêÂ¡ e o que **nêÂ£o** dêÂ¡ pra fazer (responder mensagens, etc.) |
 | [`docs/integracao-yt-pub-livesx.md`](docs/integracao-yt-pub-livesx.md) | Proposta de integraêÂ§êÂ£o com o pipeline de clips |
 | [`docs/comparativo-blotato.md`](docs/comparativo-blotato.md) | Metricool vs Blotato ê¢â¬â quando cada uma vale |
-| [`docs/comparativo-zernio.md`](docs/comparativo-zernio.md) | Zernio ê¢â¬â API + MCP, $6/mêÂªs pro caso INEMA, hospeda mêÂ­dia |
+| [`docs/comparativo-zernio.md`](docs/comparativo-zernio.md) | Zernio ê¢â¬â API + MCP, $6/mêÂªs pro caso ARCKHÉ, hospeda mêÂ­dia |
 
 ## O fluxo, em 10 linhas
 
@@ -29,8 +29,8 @@ Documenta o que foi **testado de verdade** em 2026-08-19 ê¢â¬â um Ree
 cp /mnt/hd8t/yt-pub-lives/yt-pub-lives8/lives/<live_id>/clips/<arq>.mp4 ./reel.mp4
 
 # 2. host pêÂºblico (o Metricool sêÂ³ aceita URL direta de arquivo)
-gh release upload v1 reel.mp4 --repo inematds/midia --clobber
-# ê¢â â https://github.com/inematds/midia/releases/download/v1/reel.mp4
+gh release upload v1 reel.mp4 --repo linnoff88-dev/midia --clobber
+# ê¢â â https://github.com/linnoff88-dev/midia/releases/download/v1/reel.mp4
 
 # 3. agendar via MCP (no Claude Code, com o MCP conectado)
 #    createScheduledPost ê¢â â blogId 6745962, providers [instagram, tiktok],
@@ -47,8 +47,8 @@ O Metricool baixa o arquivo da URL e re-hospeda no CDN dele. A URL do GitHub sê
 
 ## Contexto
 
-Marca **inemafuturos** êÂ· `blogId 6745962` êÂ· plano **Free**.
-MêÂ­dia hospedada em [`inematds/midia`](https://github.com/inematds/midia) (release `v1`).
+Marca **ARCKHÉfuturos** êÂ· `blogId 6745962` êÂ· plano **Free**.
+MêÂ­dia hospedada em [`linnoff88-dev/midia`](https://github.com/linnoff88-dev/midia) (release `v1`).
 
 ---
 

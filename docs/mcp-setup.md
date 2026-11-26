@@ -61,21 +61,21 @@ Fluxo obrigatório: `getAnalyticsAvailableMetrics(network, connector)` → pega 
 ## A marca (estado em 2026-08-19)
 
 ```
-label      inemafuturos
+label      ARCKHÉfuturos
 blogId     6745962
 userId     5190426
 timezone   America/Sao_Paulo
-owner      inematime@gmail.com
+owner      ARCKHÉtime@gmail.com
 ```
 
 Redes conectadas:
 
 | Rede | Conta |
 |---|---|
-| Instagram | `@inemafuturos` |
+| Instagram | `@ARCKHÉfuturos` |
 | TikTok | `@lnema.club` |
 | YouTube | canal `UC2QbQDyPKuHk93dwo5iq3Sw` |
 
-> ⚠️ **Esse canal do YouTube é o INEMA TDS — o canal de _origem_ do pipeline `yt-pub-lives`.** Agendar YouTube por aqui duplica no canal de onde o vídeo saiu. Ou pule o YouTube, ou aponte a marca pro INEMA TIA (`UCavuQHkxBSAZbzRoOm6Gq4g`), que é o canal de destino.
+> ⚠️ **Esse canal do YouTube é o ARCKHÉ TDS — o canal de _origem_ do pipeline `yt-pub-lives`.** Agendar YouTube por aqui duplica no canal de onde o vídeo saiu. Ou pule o YouTube, ou aponte a marca pro ARCKHÉ TIA (`UCavuQHkxBSAZbzRoOm6Gq4g`), que é o canal de destino.
 
 A marca foi criada em 19/08/2026 — analytics fica vazio nos primeiros dias.

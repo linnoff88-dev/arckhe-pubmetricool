@@ -15,14 +15,14 @@ A URL só precisa estar viva **no momento do agendamento** — depois disso o Me
 
 ## Host adotado: GitHub Release
 
-Repo [`inematds/midia`](https://github.com/inematds/midia), público, release `v1` como balde de assets.
+Repo [`linnoff88-dev/midia`](https://github.com/linnoff88-dev/midia), público, release `v1` como balde de assets.
 
 ```bash
-gh release upload v1 arquivo.mp4 --repo inematds/midia --clobber
+gh release upload v1 arquivo.mp4 --repo linnoff88-dev/midia --clobber
 ```
 
 ```
-https://github.com/inematds/midia/releases/download/v1/arquivo.mp4
+https://github.com/linnoff88-dev/midia/releases/download/v1/arquivo.mp4
 ```
 
 - Até **2 GB** por arquivo

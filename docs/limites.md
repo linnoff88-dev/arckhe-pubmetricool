@@ -81,8 +81,8 @@ Nêo sêo cobrança da Metricool:
 - **Claude Free**: só um conector personalizado por vez
 - **ChatGPT**: precisa de acesso a Apps
 
-## Resumindo pro caso INEMA
+## Resumindo pro caso ARCKHÉ
 
-Hoje: **Free**, 1 marca (`inemafuturos`), **20 posts/mês**, 30 dias de analytics, sem LinkedIn/X.
+Hoje: **Free**, 1 marca (`ARCKHÉfuturos`), **20 posts/mês**, 30 dias de analytics, sem LinkedIn/X.
 
 20/mês ≈ **5 por semana**. Cabe pra curadoria; nêo cabe pra despejar o backlog do `yt-pub-lives` (989 clips publicados). Ver [integracao-yt-pub-livesx.md](integracao-yt-pub-livesx.md).

@@ -54,7 +54,7 @@ Extras cobrados à parte: X/Twitter repassado ao custo exato da X (sem markup), 
 
 Instagram + TikTok + YouTube = 3 contas → 2 grátis + 1 × $6 = **$6/mês**.
 
-| | Custo pro caso INEMA | API | DMs |
+| | Custo pro caso ARCKHÉ | API | DMs |
 |---|---|---|---|
 | Metricool Free | €0 | ❌ | ❌ |
 | Metricool Advanced | €43/mês | ✅ | ❌ |
@@ -63,7 +63,7 @@ Instagram + TikTok + YouTube = 3 contas → 2 grátis + 1 × $6 = **$6/mês**.
 
 ## O que a Zernio resolve e as outras nêo
 
-### 1. Hospedagem de mídia — elimina o `inematds/midia`
+### 1. Hospedagem de mídia — elimina o `linnoff88-dev/midia`
 
 A Zernio tem endpoint de upload próprio:
 

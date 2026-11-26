@@ -103,7 +103,7 @@ Se a escolha tiver que ser única:
 
 - ❓ Confiabilidade real de publicaçêo da Blotato (taxa de falha, comportamento em erro) — nêo testada
 - ❓ O que conta como "contato ativo" nos 1.000/mês de DM
-- ❓ Se a Blotato aceita **upload de arquivo local** ou também exige URL pública (mudaria o fluxo do [`inematds/midia`](https://github.com/inematds/midia))
+- ❓ Se a Blotato aceita **upload de arquivo local** ou também exige URL pública (mudaria o fluxo do [`linnoff88-dev/midia`](https://github.com/linnoff88-dev/midia))
 - ❓ Profundidade real do analytics da Blotato
 - ⚠️ **A API nêo entra no trial de 7 dias** — testar a API exige pagar um mês
 

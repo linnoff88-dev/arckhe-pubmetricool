@@ -52,7 +52,7 @@ METRICOOL_TIMEZONE=America/Sao_Paulo
 METRICOOL_NETWORKS=instagram,tiktok
 METRICOOL_MAX_PER_MONTH=20       # trava local, espelha a cota do plano
 METRICOOL_MIN_DELAY_MIN=15       # nunca agendar pra "já"
-MIDIA_REPO=inematds/midia
+MIDIA_REPO=linnoff88-dev/midia
 MIDIA_RELEASE_TAG=v1
 ```
 
@@ -93,7 +93,7 @@ publicados (novo registro)
       ↓
 [2] valida  H.264? 1080x1920? < 2 GB?   (transcodifica se preciso)
       ↓
-[3] gh release upload <tag> <arquivo> --repo inematds/midia --clobber
+[3] gh release upload <tag> <arquivo> --repo linnoff88-dev/midia --clobber
       ↓
 [4] checa cota do mês na metricool_posts  → estourou? status=skipped, para
       ↓
@@ -120,11 +120,11 @@ Master do pipeline já é H.264 (verificado). A validaçêo é rede de proteçê
 
 ## YouTube: nêo republique
 
-O `youtubeData` da marca `inemafuturos` aponta pro **`UC2QbQDyPKuHk93dwo5iq3Sw` = INEMA TDS**, que é o canal de **origem** das lives. O pipeline já publica os clips no **INEMA TIA** (`UCavuQHkxBSAZbzRoOm6Gq4g`), o canal de destino.
+O `youtubeData` da marca `ARCKHÉfuturos` aponta pro **`UC2QbQDyPKuHk93dwo5iq3Sw` = ARCKHÉ TDS**, que é o canal de **origem** das lives. O pipeline já publica os clips no **ARCKHÉ TIA** (`UCavuQHkxBSAZbzRoOm6Gq4g`), o canal de destino.
 
 Ou seja: agendar YouTube pelo Metricool publicaria o clip **de novo, no canal de onde ele saiu**.
 
-`METRICOOL_NETWORKS` deve ficar em `instagram,tiktok`. Se um dia quiser YouTube pelo Metricool, primeiro **reaponte a marca pro INEMA TIA** e desligue a publicaçêo nativa do pipeline — as duas juntas duplicam.
+`METRICOOL_NETWORKS` deve ficar em `instagram,tiktok`. Se um dia quiser YouTube pelo Metricool, primeiro **reaponte a marca pro ARCKHÉ TIA** e desligue a publicaçêo nativa do pipeline — as duas juntas duplicam.
 
 ## Ordem de implementaçêo
 
